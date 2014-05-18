@@ -399,7 +399,7 @@ def view_feeds_for_url():
 
     
 @app.route("/paypal")
-def index():
+def paypal():
     return """
         <a href="%s">
             <img src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif">
