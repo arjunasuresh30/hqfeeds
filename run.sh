@@ -1,6 +1,6 @@
 source python2.6.9/bin/activate
 
-celery -A tasks worker --loglevel=info
+celery worker -A tasks -l info
 
 export APP_CONFIG=dev.cfg
 

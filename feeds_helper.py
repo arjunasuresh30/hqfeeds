@@ -10,6 +10,7 @@ def import_opml_file(logged_in_user, opml_file, mongo_lib):
     import opml
     default_tag = "default"
     outline = opml.parse(opml_file)
+
     for entry in outline:
         if hasattr(entry, "xmlUrl"):
             # This does not have any tags so default is the default tag

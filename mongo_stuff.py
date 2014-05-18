@@ -1,11 +1,13 @@
 __author__='jchandrashekar'
 
 import pymongo
+import os
 
 class MongoLib(object):
     def __init__(self):
-        # TODO: The mongo server should come from config !!!
-        self.client = pymongo.MongoClient('localhost', 27017)
+        MONGO_PORT = os.environ.get('MONGO_PORT')
+        MONGO_URL = os.environ.get('MONGO_URL')
+        self.client = pymongo.MongoClient(MONGO_URL, MONGO_PORT)
         self.db = self.client.feeds
         self.feeds_dump_collection = self.db.feeds_dump
         self.feeds_meta_collection = self.db.feeds_meta
