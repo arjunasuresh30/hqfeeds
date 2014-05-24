@@ -78,7 +78,7 @@ def get_access_token():
 #     return redirect(url_for('view_feed_entries'))
 @app.route('/')
 def basic_pages(**kwargs):
-	return make_response(open('static/angular-stuff/app/index.html').read())
+	return make_response(open('static/views/index.html').read())
 
 @app.route('/get_logged_in_user_info', methods=['GET'])
 def get_user_info():
