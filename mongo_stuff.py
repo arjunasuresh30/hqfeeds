@@ -30,6 +30,21 @@ class MongoLib(object):
             return feeds_list[:feed_no_limit]
         return feeds_list
 
+    def get_all_feeds_for_user(self, mailid, limit):
+        list_of_feeds = self.user_feeds_collection.find_one({'user_name': mailid})['listOfFeeds']
+        list_of_feeds_export = []
+        
+        for feed_label, feeds_list in list_of_feeds.iteritems():
+            feed_info = {}
+            feed_info['label'] = feed_label
+            feed_info['feeds'] = []
+            for feed in feeds_list:
+                feed_info['feeds'].append({"feed_label" : self.feeds_meta_collection.find_one({"xmlUrl":feed}) and self.feeds_meta_collection.find_one({"xmlUrl":feed})['meta_info'], "URI":feed })
+                list_of_feeds_export.append(feed_info)
+        if limit:
+            return list_of_feeds_export[:limit]
+        return list_of_feeds_export
+        
     def add_feed_to_feeds_meta(self, feed_uri, feed_title):
         self.feeds_meta_collection.update({"xmlUrl":feed_uri}, {'$set': {'meta_info': feed_title}}, upsert=True)
 

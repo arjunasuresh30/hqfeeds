@@ -228,8 +228,8 @@ def google_callback(resp):
     user_info = login_or_create_user(jsondata)
     user_info["_id"] = str(user_info["_id"] )
     user_info["last_logged_in"] = str(user_info["last_logged_in"])
-    return json.dumps(user_info)
-
+    return redirect(url_for('basic_pages'))
+    # return json.dumps(user_info)
 
 @app.route('/login_with_twitter')
 def login_with_twitter():
@@ -349,6 +349,13 @@ def get_feeds_for_user():
         list_of_feeds_export.append(feed_info)
     return json.dumps(list_of_feeds_export)
 
+@app.route('/get_all_feeds_dump_for_user', methods=['GET'])
+#@login_required
+def get_all_feeds_dump_for_user():
+    user_email = "arjuna@codecognition.com"
+    feeds_list = mongo_lib.get_all_feeds_for_user(user_email,limit=50)
+    return json.dumps(feeds_list)
+    
 @app.route('/get_top_stories_for_user', methods=['GET'])
 #@login_required
 def get_top_stories_for_user():

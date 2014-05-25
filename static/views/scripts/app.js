@@ -6,24 +6,23 @@
 angular.module('hqFeeds', ['ui.bootstrap','ui.router'])
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,$urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
-        var home = {
-                name:'home',
-                url:'/',
-                templateUrl:"/static/views/index.html"
-            },
-            add_feed = {
-                name:'addFeed',
-                url: '/feed',
-                templateUrl: "/static/angular-stuff/app/views/add_feed.html"
-            },
-            import_opml = {
-                name:'importOpml',
-                url: '/opml',
-                templateUrl: "/static/angular-stuff/app/views/import_opml.html"
-            };
-        $stateProvider.state(home);
-        $stateProvider.state(addFeed);
-        $stateProvider.state(importOpml);
+        $stateProvider.state('home', {
+            url: '/',
+            views: {
+                'topNav' : {
+                    templateUrl: '/static/views/partials/topnav.html',
+                    controller: "TopNavCtrl as tpnvCtrl"
+                },
+                'socialShare' : {
+                    templateUrl: '/static/views/partials/socialshare.html',
+                    controller: "SocialShareCtrl as ssCtrl"
+                },
+                'mainContent': {
+                    templateUrl: '/static/views/partials/maincontent.html',
+                    controller: "MainContentCtrl as mnctctrl"
+                }
+            }
+        });
     }])
     .run(['$state', function ($state) {
         $state.transitionTo('home');
