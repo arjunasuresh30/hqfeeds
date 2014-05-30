@@ -5,9 +5,22 @@
 'use strict';
 
 angular.module('hqFeeds')
-    .controller("TopNavCtrl", [ function () {
-        var tpnvCtrl = this;
+    .controller("KeyBoardCtrl", [ '$scope', '$modalInstance', function ($scope, $modalInstance) {
+        console.log("KeyBoardCtrl is initiated ");
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    }])
+    .controller("TopNavCtrl", [ '$modal', function ($modal) {
         console.log("Top Nav Ctrl is initiated ");
+
+        var tpnvCtrl = this;
+        tpnvCtrl.openKeyboardShortcuts = function (size) {
+            var modalInstance = $modal.open({
+                templateUrl: '/static/views/partials/keyboardshortcuts.html',
+                controller: 'KeyBoardCtrl'
+            });
+        };
     }])
     .controller('MainContentCtrl', [ 'FeedsService', function (FeedsService) {
         var mnctctrl = this, _updateData;
