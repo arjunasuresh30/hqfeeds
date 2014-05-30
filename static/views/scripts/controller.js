@@ -48,4 +48,8 @@ angular.module('hqFeeds')
     .controller('SocialShareCtrl', [ 'FeedsService', function (FeedsService) {
         var ssCtrl = this;
         console.log("SocialShareCtrl is initiated ");
+    }])
+    .controller('FooterCtrl', [ 'FeedsService', function (FeedsService) {
+        var ftrctrl = this;
+        console.log("FooterCtrl is initiated ");
     }]);

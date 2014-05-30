@@ -1,51 +1,63 @@
-.panel-heading {
-	cursor: pointer;
-	border-radius: 0;
-}
-.panel-heading:hover {
-	background-color: #f7f7f7;
-}
-.panel-heading h4, .panel-heading h5, .panel-heading h6 {
-	margin: 0;
-	padding: 0;
-}
-.panel-group .panel + .panel {
-	margin-top: 0;
-}
-.panel {
-	border-radius: 0;
-	border: none;
-	border-bottom: 1px solid #EAEAEA;
-	box-shadow: none;
-}
-.panel-group .panel {
-	border-radius: 0;
-}
 #main {
-	padding-top: 50px;
+    padding-top: 40px;
 }
+
+.panel-heading {
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.panel-heading:hover {
+    background-color: #f7f7f7;
+}
+
+.panel-heading h4, .panel-heading h5, .panel-heading h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.panel-group .panel + .panel {
+    margin-top: 0;
+}
+
+.panel {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #EAEAEA;
+    box-shadow: none;
+}
+
+.panel-group .panel {
+    border-radius: 0;
+}
+
 .panel-default > .panel-heading + .panel-collapse .panel-body {
-	border-top: none;
+    border-top: none;
 }
+
 .feed-blogtitle {
-	float: left;
-	width: 220px;
+    float: left;
+    width: 220px;
 }
+
 .feed-data-container {
-	margin-right: 260px;
-	word-wrap: break-word;
-	margin-left: 220px;
-	height: 20px;
-	overflow: hidden;
+    margin-right: 260px;
+    word-wrap: break-word;
+    margin-left: 220px;
+    height: 20px;
+    overflow: hidden;
 }
+
 .feed-action {
-	visibility: hidden;
+    visibility: hidden;
 }
+
 .panel-heading:hover .feed-action {
-	visibility: visible;
-	z-index: 999;
+    visibility: visible;
+    z-index: 999;
 }
+
 .panel-body .feed-data-container {
-	height: auto;
-	overflow: auto;
+    height: auto;
+    overflow: auto;
 }

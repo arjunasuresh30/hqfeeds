@@ -1,519 +1,760 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
 .scrollable-menu {
-	height: auto;
-	overflow-x: hidden;
+    height: auto;
+    overflow-x: hidden;
+    display: none;
+    position: absolute;
+    min-width: 300px;
+    border: 1px solid #d4d4d4;
+}
+
+li.settings-dropdown-container .dropdown-menu li > a {
+    min-width: 200px;
+}
+
+.nav-list {
+    padding-left: 15px;
+    margin-bottom: 0;
+}
+
+.tree-toggler {
+    cursor: pointer;
+    padding-top: 10px;
+    width: 100%;
+    margin-left: -20px;
+    padding-left: 20px;
+}
+
+.scrollable-menu .nav > li > a {
+    clear: both;
+    color: #333333;
+    display: block;
+    font-weight: 400;
+    line-height: 1.42857;
+    white-space: nowrap;
+}
+
+.feed-group-hover {
+    display: none;
+}
+
+.tree-toggler:hover .feed-group-hover, .scrollable-menu .nav > li > a:hover .feed-group-hover {
+    display: block;
+    margin-left: -10px;
+    cursor: move;
 }
 
 /* template layout*/
 #subnav {
-	position: fixed;
-	width: 100%;
-	border-top: 1px solid #dadada;
+    position: fixed;
+    width: 100%;
+    border-top: 1px solid #dadada;
 }
-@media all and (max-width: 1600px) and (min-width: 1024px) {
-	.upgrade-widget {
-		display: none;
-	}
-}
-@media all and (min-width: 1601px) {
-	.footer {
-		display: none;
-	}
-}
+
 @media (max-width: 768px) {
-	#subnav {
-		padding-top: 6px;
-	}
+    #subnav {
+        padding-top: 6px;
+    }
 }
 
 #main {
-	padding-top: 50px;
-	padding-bottom: 8px;
-	margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 15px;
+    margin: 0 auto;
 }
+
 .footer {
-	background: none repeat scroll 0 0 #e0e0e0;
-	bottom: 0;
-	font-size: 12px;
-	padding: 5px 15px;
-	position: fixed;
-	width: 100%;
-	color: #818181;
+    background: none repeat scroll 0 0 #e0e0e0;
+    bottom: 0;
+    font-size: 12px;
+    padding: 5px 15px;
+    position: fixed;
+    width: 100%;
+    color: #818181;
+    z-index: 999;
+    border-top: 1px solid #CCCCCC;
 }
+
+.footer .company-built-by {
+    float: right;
+    padding-top: 3px;
+}
+
+.footer .btn.upgrade {
+    margin-top: 1px;
+}
+
 .feed-open-social-icon-container {
-	position: fixed;
-	left: 0px;
-	top: 50px;
+    position: fixed;
+    left: 0px;
+    top: 40px;
 }
+
 .share-more .nav > li > a {
-	padding: 10px;
+    padding: 10px;
 }
-.footer-link {
-	color: #777777;
-}
-.footer-link:hover {
-	color: #AAAAAA;
-	text-decoration: none;
-}
-.upgrade-widget {
-	position: absolute;
-	top: 70px;
-	left: 1430px;
-}
+
 /* * * Helper Classes Starts * * */
 /* padding top classes */
 .pad-top0 {
-	padding-top: 0px;
+    padding-top: 0px;
 }
+
 .pad-top5 {
-	padding-top: 5px;
+    padding-top: 5px;
 }
+
+.pad-top7 {
+    padding-top: 7px;
+}
+
 .pad-top10 {
-	padding-top: 10px;
+    padding-top: 10px;
 }
+
 .pad-top15 {
-	padding-top: 15px;
+    padding-top: 15px;
 }
+
 .pad-top20 {
-	padding-top: 20px;
+    padding-top: 20px;
 }
+
 .pad-top25 {
-	padding-top: 25px;
+    padding-top: 25px;
 }
+
 .pad-top30 {
-	padding-top: 30px;
+    padding-top: 30px;
 }
+
 .pad-top40 {
-	padding-top: 40px;
+    padding-top: 40px;
 }
+
 .pad-top50 {
-	padding-top: 50px;
+    padding-top: 50px;
 }
+
 .pad-top60 {
-	padding-top: 60px;
+    padding-top: 60px;
 }
+
 .pad-top70 {
-	padding-top: 70px;
+    padding-top: 70px;
 }
+
 .pad-top80 {
-	padding-top: 80px;
+    padding-top: 80px;
 }
+
 /* padding right classes */
 .pad-right0 {
-	padding-right: 0px;
+    padding-right: 0px;
 }
+
 .pad-right5 {
-	padding-right: 5px;
+    padding-right: 5px;
 }
+
 .pad-right10 {
-	padding-right: 10px;
+    padding-right: 10px;
 }
+
 .pad-right15 {
-	padding-right: 15px;
+    padding-right: 15px;
 }
+
 .pad-right20 {
-	padding-right: 20px;
+    padding-right: 20px;
 }
+
 .pad-right25 {
-	padding-right: 25px;
+    padding-right: 25px;
 }
+
 .pad-right30 {
-	padding-right: 30px;
+    padding-right: 30px;
 }
+
 .pad-right40 {
-	padding-right: 40px;
+    padding-right: 40px;
 }
+
 .pad-right50 {
-	padding-right: 50px;
+    padding-right: 50px;
 }
+
 .pad-right60 {
-	padding-right: 60px;
+    padding-right: 60px;
 }
+
 .pad-right70 {
-	padding-right: 70px;
+    padding-right: 70px;
 }
+
 .pad-right80 {
-	padding-right: 80px;
+    padding-right: 80px;
 }
+
 /* padding bottom classes */
 .pad-bottom0 {
-	padding-bottom: 0px;
+    padding-bottom: 0px;
 }
+
 .pad-bottom5 {
-	padding-bottom: 5px;
+    padding-bottom: 5px;
 }
+
 .pad-bottom10 {
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
+
 .pad-bottom15 {
-	padding-bottom: 15px;
+    padding-bottom: 15px;
 }
+
 .pad-bottom20 {
-	padding-bottom: 20px;
+    padding-bottom: 20px;
 }
+
 .pad-bottom25 {
-	padding-bottom: 25px;
+    padding-bottom: 25px;
 }
+
 .pad-bottom30 {
-	padding-bottom: 30px;
+    padding-bottom: 30px;
 }
+
 .pad-bottom40 {
-	padding-bottom: 40px;
+    padding-bottom: 40px;
 }
+
 .pad-bottom50 {
-	padding-bottom: 50px;
+    padding-bottom: 50px;
 }
+
 .pad-bottom60 {
-	padding-bottom: 60px;
+    padding-bottom: 60px;
 }
+
 .pad-bottom70 {
-	padding-bottom: 70px;
+    padding-bottom: 70px;
 }
+
 .pad-bottom80 {
-	padding-bottom: 80px;
+    padding-bottom: 80px;
 }
+
 /* padding left classes */
 .pad-left0 {
-	padding-left: 0px;
+    padding-left: 0px;
 }
+
 .pad-left5 {
-	padding-left: 5px;
+    padding-left: 5px;
 }
+
 .pad-left10 {
-	padding-left: 10px;
+    padding-left: 10px;
 }
+
 .pad-left15 {
-	padding-left: 15px;
+    padding-left: 15px;
 }
+
 .pad-left20 {
-	padding-left: 20px;
+    padding-left: 20px;
 }
+
 .pad-left25 {
-	padding-left: 25px;
+    padding-left: 25px;
 }
+
 .pad-left30 {
-	padding-left: 30px;
+    padding-left: 30px;
 }
+
 .pad-left40 {
-	padding-left: 40px;
+    padding-left: 40px;
 }
+
 .pad-left50 {
-	padding-left: 50px;
+    padding-left: 50px;
 }
+
 .pad-left60 {
-	padding-left: 60px;
+    padding-left: 60px;
 }
+
 .pad-left70 {
-	padding-left: 70px;
+    padding-left: 70px;
 }
+
 .pad-left80 {
-	padding-left: 80px;
+    padding-left: 80px;
 }
+
 /* margin top classes */
 .mar-top0 {
-	margin-top: 0px;
+    margin-top: 0px;
 }
+
 .mar-top5 {
-	margin-top: 5px;
+    margin-top: 5px;
 }
+
 .mar-top10 {
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 .mar-top15 {
-	margin-top: 15px;
+    margin-top: 15px;
 }
+
 .mar-top20 {
-	margin-top: 20px;
+    margin-top: 20px;
 }
+
 .mar-top25 {
-	margin-top: 25px;
+    margin-top: 25px;
 }
+
 .mar-top30 {
-	margin-top: 30px;
+    margin-top: 30px;
 }
+
 .mar-top40 {
-	margin-top: 40px;
+    margin-top: 40px;
 }
+
 .mar-top50 {
-	margin-top: 50px;
+    margin-top: 50px;
 }
+
 .mar-top60 {
-	margin-top: 60px;
+    margin-top: 60px;
 }
+
 .mar-top70 {
-	margin-top: 70px;
+    margin-top: 70px;
 }
+
 .mar-top80 {
-	margin-top: 80px;
+    margin-top: 80px;
 }
+
 /* margin right classes */
 .mar-right0 {
-	margin-right: 0px;
+    margin-right: 0px;
 }
+
 .mar-right5 {
-	margin-right: 5px;
+    margin-right: 5px;
 }
+
 .mar-right10 {
-	margin-right: 10px;
+    margin-right: 10px;
 }
+
 .mar-right15 {
-	margin-right: 15px;
+    margin-right: 15px;
 }
+
 .mar-right20 {
-	margin-right: 20px;
+    margin-right: 20px;
 }
+
 .mar-right25 {
-	margin-right: 25px;
+    margin-right: 25px;
 }
+
 .mar-right30 {
-	margin-right: 30px;
+    margin-right: 30px;
 }
+
 .mar-right40 {
-	margin-right: 40px;
+    margin-right: 40px;
 }
+
 .mar-right50 {
-	margin-right: 50px;
+    margin-right: 50px;
 }
+
 .mar-right60 {
-	margin-right: 60px;
+    margin-right: 60px;
 }
+
 .mar-right70 {
-	margin-right: 70px;
+    margin-right: 70px;
 }
+
 .mar-right80 {
-	margin-right: 80px;
+    margin-right: 80px;
 }
+
 /* margin bottom classes */
 .mar-bottom0 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
+
 .mar-bottom5 {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
+
 .mar-bottom10 {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 .mar-bottom15 {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
+
 .mar-bottom20 {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 .mar-bottom25 {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
 }
+
 .mar-bottom30 {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 }
+
 .mar-bottom40 {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
+
 .mar-bottom50 {
-	margin-bottom: 50px;
+    margin-bottom: 50px;
 }
+
 .mar-bottom60 {
-	margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
 .mar-bottom70 {
-	margin-bottom: 70px;
+    margin-bottom: 70px;
 }
+
 .mar-bottom80 {
-	margin-bottom: 80px;
-}/* margin left classes */
+    margin-bottom: 80px;
+}
+
+/* margin left classes */
 .mar-left0 {
-	margin-left: 0px;
+    margin-left: 0px;
 }
+
 .mar-left5 {
-	margin-left: 5px;
+    margin-left: 5px;
 }
+
 .mar-left10 {
-	margin-left: 10px;
+    margin-left: 10px;
 }
+
 .mar-left15 {
-	margin-left: 15px;
+    margin-left: 15px;
 }
+
 .mar-left20 {
-	margin-left: 20px;
+    margin-left: 20px;
 }
+
 .mar-left25 {
-	margin-left: 25px;
+    margin-left: 25px;
 }
+
 .mar-left30 {
-	margin-left: 30px;
+    margin-left: 30px;
 }
+
 .mar-left40 {
-	margin-left: 40px;
+    margin-left: 40px;
 }
+
 .mar-left50 {
-	margin-left: 50px;
+    margin-left: 50px;
 }
+
 .mar-left60 {
-	margin-left: 60px;
+    margin-left: 60px;
 }
+
 .mar-left70 {
-	margin-left: 70px;
+    margin-left: 70px;
 }
+
 .mar-left80 {
-	margin-left: 80px;
+    margin-left: 80px;
 }
+
 /*font color*/
 .font-color-818181 {
-	color: #818181;
+    color: #818181;
 }
+
 .font-color-e93207 {
-	color: #e93207;
+    color: #e93207;
 }
+
 .font-color-333333 {
-	color: #333333;
+    color: #333333;
 }
+
 .font-color-0088cc {
-	color: #0088cc;
+    color: #0088cc;
 }
+
 .font-color-aaaaaa {
-	color: #aaaaaa;
+    color: #aaaaaa;
 }
+
 .font-color-ffbf00 {
-	color: #ffbf00;
+    color: #ffbf00;
 }
+
 .font-color-ffffff {
-	color: #ffffff;
+    color: #ffffff;
 }
+
 .font-color-6cc009 {
-	color: #6cc009;
+    color: #6cc009;
 }
+
 .font-color-fe9a2e {
-	color: #fe9a2e;
+    color: #fe9a2e;
 }
+
 .font-color-666666 {
-	color: #666666;
+    color: #666666;
 }
+
 .font-color-e7e7e7 {
-	color: #e7e7e7;
+    color: #e7e7e7;
 }
+
 .font-color-cccccc {
-	color: #cccccc;
+    color: #cccccc;
 }
+
 .font-color-eeeeee {
-	color: #eeeeee;
+    color: #eeeeee;
 }
+
 .font-color-7f7f7f {
-	color: #7f7f7f;
+    color: #7f7f7f;
 }
+
 .font-color-0090FF {
-	color: #0090ff;
+    color: #0090ff;
 }
+
 .font-color-fc5959 {
-	color: #fc5959;
+    color: #fc5959;
 }
+
 .font-color-999999 {
-	color: #999999;
+    color: #999999;
 }
+
 .font-color-72a7da {
-	color: #72a7da;
+    color: #72a7da;
 }
+
 .font-color-666666 {
-	color: 666666;
+    color: 666666;
 }
+
 .font-color-6cc009 {
-	color: 6cc009;
+    color: 6 cc009;
 }
+
 .font-color-ffbf00 {
-	color: #FFBF00;
+    color: #FFBF00;
 }
+
+.font-color-428bca {
+    color: #428BCA;
+}
+
 /*font weight*/
 .italic-text {
-	font-style: italic;
+    font-style: italic;
 }
+
 .bold-text {
-	font-weight: bold;
+    font-weight: bold;
 }
+
 .normal-text {
-	font-weight: normal;
+    font-weight: normal;
 }
+
 /*font size*/
 .font-size-10px {
-	font-size: 10px;
+    font-size: 10px;
 }
+
 .font-size-12px {
-	font-size: 12px;
+    font-size: 12px;
 }
+
 .font-size-14px {
-	font-size: 14px;
+    font-size: 14px;
 }
+
 .font-size-16px {
-	font-size: 16px;
+    font-size: 16px;
 }
+
 .font-size-18px {
-	font-size: 18px;
+    font-size: 18px;
 }
+
 .font-size-20px {
-	font-size: 20px;
+    font-size: 20px;
 }
+
 .font-size-24px {
-	font-size: 24px;
+    font-size: 24px;
 }
+
 .font-size-32px {
-	font-size: 32px;
+    font-size: 32px;
 }
+
 .font-size-40px {
-	font-size: 40px;
+    font-size: 40px;
 }
+
 .font-size-50px {
-	font-size: 50px;
+    font-size: 50px;
 }
+
 /*background color*/
 .background-color-eeeeee {
-	background: #eeeeee;
+    background: #eeeeee;
 }
+
 .background-color-f7f7f7 {
-	background: #f7f7f7;
+    background: #f7f7f7;
 }
+
 .background-color-fffcdd {
-	background: #fffcdd;
+    background: #fffcdd;
 }
+
 .background-color-ffffff {
-	background-color: #ffffff;
+    background-color: #ffffff;
 }
+
 .background-color-c4e3f3 {
-	background-color: #c4e3f3;
+    background-color: #c4e3f3;
 }
+
 .background-color-fefac2 {
-	background: #fefac2;
+    background: #fefac2;
 }
+
 .circular-background-color-aaaaaa {
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-	background: #aaaaaa;
-	padding: 5px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: #aaaaaa;
+    padding: 5px;
 }
+
 .circular-background-color {
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-	padding: 5px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    padding: 5px;
 }
+
 .background-color-333333 {
-	background: #333333;
-	color: #ffffff;
+    background: #333333;
+    color: #ffffff;
 }
+
 .background-color-fffede {
-	background: #fffede;
+    background: #fffede;
 }
+
 .background-color-fba16c {
-	background: #fba16c;
+    background: #fba16c;
 }
+
 .background-color-cd9b9b {
-	background: #cd9b9b;
+    background: #cd9b9b;
 }
+
 .background-color-eee9e9 {
-	background: #eee9e9;
+    background: #eee9e9;
 }
+
 .background-color-fec9c9 {
-	background: #fec9c9;
+    background: #fec9c9;
 }
+
+.background-color-5cb85c {
+    background: #5CB85C;
+}
+
 a[class*="font-color-"]:hover {
-	color: #333333;
+    color: #333333;
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * Classes to manage borders Starts * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.border-right-d4d4d4 {
+    border-right: 1px solid #d4d4d4;
+}
+
+.border-left-d4d4d4 {
+    border-left: 1px solid #d4d4d4;
+}
+
+.border-top-d4d4d4 {
+    border-top: 1px solid #d4d4d4;
+}
+
+.border-bottom-d4d4d4 {
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.border-right-acacac {
+    border-right: 1px solid #acacac;
+}
+
+.border-left-acacac {
+    border-left: 1px solid #acacac;
+}
+
+.border-top-acacac {
+    border-top: 1px solid #acacac;
+}
+
+.border-bottom-acacac {
+    border-bottom: 1px solid #acacac;
+}
+
+.border-right-333333 {
+    border-right: 1px solid #333333;
+}
+
+.border-left-333333 {
+    border-left: 1px solid #333333;
+}
+
+.border-top-333333 {
+    border-top: 1px solid #333333;
+}
+
+.border-bottom-333333 {
+    border-bottom: 1px solid #333333;
+}
+
 /* * * Helper Classes Ends * * */

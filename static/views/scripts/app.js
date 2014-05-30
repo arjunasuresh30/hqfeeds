@@ -20,6 +20,10 @@ angular.module('hqFeeds', ['ui.bootstrap','ui.router'])
                 'mainContent': {
                     templateUrl: '/static/views/partials/maincontent.html',
                     controller: "MainContentCtrl as mnctctrl"
+                },
+                'footer': {
+                    templateUrl: '/static/views/partials/footer.html',
+                    controller: "FooterCtrl as ftrctrl"
                 }
             }
         });
