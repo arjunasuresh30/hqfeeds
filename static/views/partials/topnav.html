@@ -7,7 +7,7 @@
             <div class="navbar-header">
                 <a data-toggle-nav-bar class="navbar-btn btn btn-default btn-sm">
                     <i class="fa fa-align-justify mar-right5"></i>
-                    All
+
                     <small>
                         <i class="fa fa-chevron-down mar-left5"></i>
                     </small>
@@ -17,7 +17,7 @@
                     <ul class="nav nav-list">
                         <li>
                             <a>
-                                <span class="badge pull-right">
+                                <span mark-read class="badge pull-right" hq-menu="popular">
                                     <span ng-bind="tpnvCtrl.allTopCatrgories.popular.totalunread"></span>
                                 </span>
                                 <i class="fa fa-signal mar-right5 font-size-16px pull-left"></i>
@@ -36,7 +36,7 @@
                                 Saved
                             </a>
                         </li>
-                        <div ng-repeat="eachmenucategory in tpnvCtrl.allMenuCatrgories track by $id(eachmenucategory)">
+                        <div ng-repeat="eachmenucategory in tpnvCtrl.allMenuCatrgories | orderBy:tpnvCtrl.predicate track by $id(eachmenucategory)">
                             <li class="nav-divider"></li>
                             <li>
                                 <label data-toggle-sub-nav-bar class="tree-toggler nav-header pad-right15">
@@ -44,11 +44,11 @@
                                     <i class="fa fa-ellipsis-v"></i>
                                 </span>
                                     <span class="badge pull-right">
-                                        <span ng-bind="eachmenucategory.totalunread"></span>
+                                        <span class="markunread" hq-menu="{{eachmenucategory.menuname}}" ng-bind="eachmenucategory.totalunread"></span>
                                     </span>
 
                                     <i class="fa fa-video-camera mar-right5 font-size-16px"></i>
-                                    <span ng-bind="eachmenucategory.menuname"></span>
+                                    <span class="changecategoryroute" ng-bind="eachmenucategory.menuname"></span>
                                 </label>
                                 <ul class="nav nav-list tree" style="display: none;">
                                     <li ng-repeat="eachsubcategory in eachmenucategory.subcategories">

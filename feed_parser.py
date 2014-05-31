@@ -404,6 +404,11 @@ def view_feeds_for_url():
     feeds_list = mongo_lib.get_entries_for_a_particular_feed(feed_uri,feed_no_limit=20)
     return json.dumps(feeds_list)
 
+@app.route("/mark_read", methods=['POST'])
+def mark_read():
+    print request.data
+    return "True"
+    
 @app.route("/get_all_menu_categories", methods=['GET'])
 def get_all_menu_categories():
     top_list = {
@@ -422,6 +427,7 @@ def get_all_menu_categories():
         {
             'menuname' : 'Angular JS',
             'totalunread' : 51,
+            'listpriority' : 1,
             'subcategories' : [
                 {
                     'subcategory':'angularjs.org',
@@ -440,6 +446,7 @@ def get_all_menu_categories():
         {
             'menuname' : 'JS',
             'totalunread' : 51,
+            'listpriority' : 1,
             'subcategories' : [
                 {
                     'subcategory':'angularjs.org',
@@ -456,6 +463,12 @@ def get_all_menu_categories():
             ]
         }
     ]
+    default_menu = {
+        'menuname' : 'All',
+        'totalunread' : 100,
+        'listpriority' : 100000
+    }
+    menu_list.append(default_menu)
     top_nav_data = {
         'menu_list' : menu_list,
         'top_list' : top_list

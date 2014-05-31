@@ -14,6 +14,7 @@ angular.module('hqFeeds')
     .controller("TopNavCtrl", [ 'FeedsService', '$modal', function (FeedsService, $modal) {
         console.log("Top Nav Ctrl is initiated ");
         var tpnvCtrl = this, _updateMenu;
+        tpnvCtrl.predicate = '-listpriority';
         tpnvCtrl.openKeyboardShortcuts = function (size) {
             var modalInstance = $modal.open({
                 templateUrl: '/static/views/partials/keyboardshortcuts.html',
