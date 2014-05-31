@@ -14,6 +14,9 @@ angular.module('hqFeeds')
         feed_labels = "";
 
         return {
+            getAllMenuCategores : function() {
+                return $http.get('get_all_menu_categories');
+            },
             set_feed_uri: function (uri, label, feed_label) {
                 currently_reading_uri = uri;
                 currently_reading_label = label;

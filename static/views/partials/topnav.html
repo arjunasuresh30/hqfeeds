@@ -1,103 +1,71 @@
 <div class="navbar navbar-fixed-top header">
     <div class="col-md-12">
         <div class="navbar-header">
-            <a href="#" class="navbar-brand pad-left0 font-color-333333">Brand Name</a>
+            <a class="navbar-brand pad-left0 font-color-333333">Brand Name</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse1">
             <div class="navbar-header">
-                <a class="navbar-btn btn btn-default btn-sm" href="#"><i class="fa fa-align-justify mar-right5"></i> All
-                    <small><i class="fa fa-chevron-down mar-left5"></i></small>
+                <a data-toggle-nav-bar class="navbar-btn btn btn-default btn-sm">
+                    <i class="fa fa-align-justify mar-right5"></i>
+                    All
+                    <small>
+                        <i class="fa fa-chevron-down mar-left5"></i>
+                    </small>
                 </a>
-                <!-- Adjust max-height of class scrollable-menu to the haight of the window -->
+                <!-- Adjust max-height of class scrollable-menu to the height of the window -->
                 <div class="scrollable-menu background-color-eeeeee" style="height: 531px;">
                     <ul class="nav nav-list">
                         <li>
-                            <a href="#"><span class="badge pull-right">26</span><i
-                                    class="fa fa-signal mar-right5 font-size-16px pull-left"></i>Popular</a>
+                            <a>
+                                <span class="badge pull-right">
+                                    <span ng-bind="tpnvCtrl.allTopCatrgories.popular.totalunread"></span>
+                                </span>
+                                <i class="fa fa-signal mar-right5 font-size-16px pull-left"></i>
+                                Popular
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-star mar-right5 font-size-16px"></i> Favourites</a>
+                            <a>
+                                <i class="fa fa-star mar-right5 font-size-16px"></i>
+                                Favourites
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bookmark mar-right5 font-size-16px"></i> Saved</a>
+                            <a>
+                                <i class="fa fa-bookmark mar-right5 font-size-16px"></i>
+                                Saved
+                            </a>
                         </li>
-                        <li class="nav-divider"></li>
-                        <li>
-                            <label class="tree-toggler nav-header pad-right15"><span class="pull-left feed-group-hover"><i
-                                    class="fa fa-ellipsis-v"></i></span><span class="badge pull-right">26</span><i
-                                    class="fa fa-video-camera mar-right5 font-size-16px"></i> Angular JS</label>
-                            <ul class="nav nav-list tree" style="display: none;">
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-adjust mar-right5 font-size-16px"></i> User Chosen Icon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-adn mar-right5 font-size-16px"></i> Favicon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><span class="badge pull-right">26</span><i
-                                            class="fa fa-align-center mar-right5 font-size-16px"></i> User Chosen
-                                        Icon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-align-right mar-right5 font-size-16px"></i> Favicon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-ambulance mar-right5 font-size-16px"></i> User Chosen Icon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-anchor mar-right5 font-size-16px"></i> Favicon</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-divider"></li>
-                        <li>
-                            <label class="tree-toggler nav-header pad-right15"><span class="pull-left feed-group-hover"><i
-                                    class="fa fa-ellipsis-v"></i></span><span class="badge pull-right">26</span><i
-                                    class="fa fa-barcode mar-right5 font-size-16px"></i> Python</label>
-                            <ul class="nav nav-list tree" style="display: none;">
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-bars mar-right5 font-size-16px"></i> User Chosen Icon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-beer mar-right5 font-size-16px"></i> Favicon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-bell mar-right5 font-size-16px"></i> User Chosen Icon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-bitbucket mar-right5 font-size-16px"></i> Favicon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><i
-                                            class="fa fa-bitcoin mar-right5 font-size-16px"></i> User Chosen Icon</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="pull-left feed-group-hover"><i
-                                            class="fa fa-ellipsis-v"></i></span><span class="badge pull-right">26</span><i
-                                            class="fa fa-bolt mar-right5 font-size-16px"></i> Favicon</a>
-                                </li>
-                            </ul>
-                        </li>
+                        <div ng-repeat="eachmenucategory in tpnvCtrl.allMenuCatrgories track by $id(eachmenucategory)">
+                            <li class="nav-divider"></li>
+                            <li>
+                                <label data-toggle-sub-nav-bar class="tree-toggler nav-header pad-right15">
+                                <span class="pull-left feed-group-hover">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                    <span class="badge pull-right">
+                                        <span ng-bind="eachmenucategory.totalunread"></span>
+                                    </span>
+
+                                    <i class="fa fa-video-camera mar-right5 font-size-16px"></i>
+                                    <span ng-bind="eachmenucategory.menuname"></span>
+                                </label>
+                                <ul class="nav nav-list tree" style="display: none;">
+                                    <li ng-repeat="eachsubcategory in eachmenucategory.subcategories">
+                                        <a>
+                                            <span class="pull-left feed-group-hover">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <span class="badge pull-right">
+                                                <span ng-bind="eachsubcategory.unreadcount"></span>
+                                            </span>
+                                            <img class="favicon" ng-src="{{ 'http://www.google.com/s2/favicons?alt=feed&domain=' + eachsubcategory.domain }}" width="16" height="16" align="top">
+                                            <span ng-bind="eachsubcategory.subcategory"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -115,16 +83,17 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="font-color-999999 border-right-d4d4d4" ng-click="tpnvCtrl.openKeyboardShortcuts()">Keyboard Shortcuts</a>
+                    <a class="font-color-999999 border-right-d4d4d4" ng-click="tpnvCtrl.openKeyboardShortcuts()">Keyboard
+                        Shortcuts</a>
                 </li>
                 <li>
-                    <a href="#" class="font-color-666666 border-right-d4d4d4"><i class="fa fa-plus"></i></a>
+                    <a class="font-color-666666 border-right-d4d4d4"><i class="fa fa-plus"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="font-color-666666"><i class="fa fa-check"></i></a>
+                    <a class="font-color-666666"><i class="fa fa-check"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="font-color-666666"><i class="fa fa-th-large"></i></a>
+                    <a class="font-color-666666"><i class="fa fa-th-large"></i></a>
                 </li>
             </ul>
         </div>

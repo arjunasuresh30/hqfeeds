@@ -11,16 +11,23 @@ angular.module('hqFeeds')
             $modalInstance.dismiss('cancel');
         };
     }])
-    .controller("TopNavCtrl", [ '$modal', function ($modal) {
+    .controller("TopNavCtrl", [ 'FeedsService', '$modal', function (FeedsService, $modal) {
         console.log("Top Nav Ctrl is initiated ");
-
-        var tpnvCtrl = this;
+        var tpnvCtrl = this, _updateMenu;
         tpnvCtrl.openKeyboardShortcuts = function (size) {
             var modalInstance = $modal.open({
                 templateUrl: '/static/views/partials/keyboardshortcuts.html',
                 controller: 'KeyBoardCtrl'
             });
         };
+        _updateMenu = function() {
+            FeedsService.getAllMenuCategores()
+                .then(function(data) {
+                    tpnvCtrl.allMenuCatrgories = data.data.menu_list;
+                    tpnvCtrl.allTopCatrgories = data.data.top_list;
+                });
+        };
+        _updateMenu();
     }])
     .controller('MainContentCtrl', [ 'FeedsService', function (FeedsService) {
         var mnctctrl = this, _updateData;

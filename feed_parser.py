@@ -404,6 +404,63 @@ def view_feeds_for_url():
     feeds_list = mongo_lib.get_entries_for_a_particular_feed(feed_uri,feed_no_limit=20)
     return json.dumps(feeds_list)
 
+@app.route("/get_all_menu_categories", methods=['GET'])
+def get_all_menu_categories():
+    top_list = {
+        'popular' : {
+            'totalunread' : 10
+        },
+        'favourites' : {
+            'totalunread' : 9
+        },
+        'saved' : {
+            'totalunread' : 10
+        }
+    }
+
+    menu_list = [
+        {
+            'menuname' : 'Angular JS',
+            'totalunread' : 51,
+            'subcategories' : [
+                {
+                    'subcategory':'angularjs.org',
+                    'url' : 'blog.angularjs.org',
+                    'unreadcount' : 21,
+                    'domain' : 'blog.angularjs.org' 
+                },
+                {
+                    'subcategory':'egghead.io',
+                    'url' : 'egghead.io',
+                    'unreadcount' : 30,
+                    'domain' : 'egghead.io' 
+                }
+            ]
+        },
+        {
+            'menuname' : 'JS',
+            'totalunread' : 51,
+            'subcategories' : [
+                {
+                    'subcategory':'angularjs.org',
+                    'url' : 'blog.angularjs.org',
+                    'unreadcount' : 21,
+                    'domain' : 'blog.angularjs.org' 
+                },
+                {
+                    'subcategory':'egghead.io',
+                    'url' : 'egghead.io',
+                    'unreadcount' : 30,
+                    'domain' : 'egghead.io' 
+                }
+            ]
+        }
+    ]
+    top_nav_data = {
+        'menu_list' : menu_list,
+        'top_list' : top_list
+    }
+    return json.dumps(top_nav_data)
     
 @app.route("/paypal")
 def paypal():
