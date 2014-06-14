@@ -59,4 +59,8 @@ angular.module('hqFeeds')
     .controller('FooterCtrl', [ 'FeedsService', function (FeedsService) {
         var ftrctrl = this;
         console.log("FooterCtrl is initiated ");
+    }])
+    .controller('UpgradeCtrl', [ 'FeedsService', function (FeedsService) {
+        var upctrl = this;
+        console.log("upctrl is initiated ");
     }]);
