@@ -352,8 +352,32 @@ def get_feeds_for_user():
 @app.route('/get_all_feeds_dump_for_user', methods=['GET'])
 #@login_required
 def get_all_feeds_dump_for_user():
+    print request.args.get('ctgy', '')
     user_email = "arjuna@codecognition.com"
-    feeds_list = mongo_lib.get_all_feeds_for_user(user_email,limit=50)
+    # feeds_list = mongo_lib.get_all_feeds_for_user(user_email,limit=50)
+    feeds_list = [
+        {
+            'title' : 'Dynamic Group Header - 1',
+            'feed' : 'Site point',
+            'recommendation' : '3',
+            'feedupdated' : '01:20am',
+            'content' : 'Dynamic Group Body - 1'
+        },
+        {
+            'title' : 'Dynamic Group Header - 2',
+            'feed' : 'Site point',
+            'recommendation' : '3',
+            'feedupdated' : '01:20am',
+            'content' : 'Dynamic Group Body - 2'
+        },
+        {
+            'title' : 'Dynamic Group Header - 3',
+            'feed' : 'Site point',
+            'recommendation' : '3',
+            'feedupdated' : '01:20am',
+            'content' : 'Dynamic Group Body - 3'
+        }
+    ]
     return json.dumps(feeds_list)
     
 @app.route('/get_top_stories_for_user', methods=['GET'])

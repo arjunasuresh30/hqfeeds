@@ -53,8 +53,8 @@ angular.module('hqFeeds')
             getFeeds: function () {
                 return $http.get('get_feeds_for_user');
             },
-            getFeedsDump: function () {
-                return $http.get('get_all_feeds_dump_for_user');
+            getFeedsDump: function (ctgy) {
+                return $http.get('get_all_feeds_dump_for_user?ctgy='+ctgy);
             },
 //            get_latest_feeds_for_default_view: function() {
 //                return $http.get('get_top_stories_for_user');

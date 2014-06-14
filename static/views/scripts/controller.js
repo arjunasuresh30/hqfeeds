@@ -30,8 +30,12 @@ angular.module('hqFeeds')
         };
         _updateMenu();
     }])
-    .controller('MainContentCtrl', [ 'FeedsService', function (FeedsService) {
+    .controller('MainContentCtrl', [ 'FeedsService', '$state', '$stateParams', function (FeedsService, $state, $stateParams) {
         var mnctctrl = this, _updateData;
+        mnctctrl.getConfig = {
+            stateObj : $state,
+            stateParamsObj : $stateParams
+        };
         console.log("MainContentCtrl is initiated ");
         mnctctrl.shareMe = function(idx, eachfdobj, e) {
             if (e) {
@@ -40,31 +44,13 @@ angular.module('hqFeeds')
             }
             console.log(eachfdobj);
         };
-//        _updateData = function() {
-//            FeedsService.getFeedsDump()
-//                .then(function(data) {
-//                    debugger;
-//
-//                    mnctctrl.feedslist = data;
-//                });
-//        };
-//        _updateData();
-        mnctctrl.feedslist = [
-            {
-                title: 'Dynamic Group Header - 1',
-                feed: 'Site point',
-                recommendation: '3',
-                feedupdated: '01:20am',
-                content: 'Dynamic Group Body - 1'
-            },
-            {
-                title: 'Dynamic Group Header - 2',
-                feed: 'Site point',
-                recommendation: '3',
-                feedupdated: '01:20am',
-                content: 'Dynamic Group Body - 2'
-            }
-        ];
+        _updateData = function(config) {
+            FeedsService.getFeedsDump((config.stateParamsObj && config.stateParamsObj.categoryname) || 'All')
+                .then(function(data) {
+                    mnctctrl.feedslist = data.data;
+                });
+        };
+        _updateData(mnctctrl.getConfig);
     }])
     .controller('SocialShareCtrl', [ 'FeedsService', function (FeedsService) {
         var ssCtrl = this;
