@@ -14,10 +14,10 @@ angular.module('hqFeeds', ['ui.bootstrap','ui.router'])
                         templateUrl: '/static/views/partials/topnav.html',
                         controller: "TopNavCtrl as tpnvCtrl"
                     },
-                    'socialShare' : {
-                        templateUrl: '/static/views/partials/socialshare.html',
-                        controller: "SocialShareCtrl as ssCtrl"
-                    },
+//                    'socialShare' : {
+//                        templateUrl: '/static/views/partials/socialshare.html',
+//                        controller: "SocialShareCtrl as ssCtrl"
+//                    },
                     'mainContent': {
                         templateUrl: '/static/views/partials/maincontent.html',
                         controller: "MainContentCtrl as mnctctrl"
