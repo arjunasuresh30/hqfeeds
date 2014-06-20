@@ -21,7 +21,7 @@ angular.module('hqFeeds')
                 element.bind('click', function (event) {
                     var elementObject = jQuery(event.target);
                     if(elementObject.hasClass('changecategoryroute')) {
-                        $state.go('home',{categoryname:event.target.innerHTML},{reload:true});
+                        $state.go('home',{cname:event.target.innerHTML,'view':'list'},{reload:true});
                         return true;
                     }
                     else if (elementObject.hasClass('markunread')) {

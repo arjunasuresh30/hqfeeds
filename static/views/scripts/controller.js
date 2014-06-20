@@ -11,7 +11,7 @@ angular.module('hqFeeds')
             $modalInstance.dismiss('cancel');
         };
     }])
-    .controller("TopNavCtrl", [ 'FeedsService', '$modal', function (FeedsService, $modal) {
+    .controller("TopNavCtrl", [ '$state', '$stateParams', 'FeedsService', '$modal', function ($state, $stateParams, FeedsService, $modal) {
         console.log("Top Nav Ctrl is initiated ");
         var tpnvCtrl = this, _updateMenu;
         tpnvCtrl.predicate = '-listpriority';
@@ -21,33 +21,49 @@ angular.module('hqFeeds')
                 controller: 'KeyBoardCtrl'
             });
         };
-        _updateMenu = function() {
+        tpnvCtrl.updateViewType = function () {
+            var newview;
+            if ($stateParams.view === 'list') {
+                newview = 'tiles';
+            }
+            else {
+                newview = 'list';
+            }
+            $state.transitionTo($state.current, {'cname': $stateParams.cname, 'view': newview}, {
+                reload: true, inherit: false, notify: true
+            });
+        };
+        _updateMenu = function () {
             FeedsService.getAllMenuCategores()
-                .then(function(data) {
+                .then(function (data) {
                     tpnvCtrl.allMenuCatrgories = data.data.menu_list;
                     tpnvCtrl.allTopCatrgories = data.data.top_list;
                 });
         };
         _updateMenu();
     }])
-    .controller('MainContentCtrl', [ 'FeedsService', '$state', '$stateParams', function (FeedsService, $state, $stateParams) {
+    .controller('MainContentCtrl', [ 'SplitArrayService', 'FeedsService', '$state', '$stateParams', function (SplitArrayService, FeedsService, $state, $stateParams) {
         var mnctctrl = this, _updateData;
+        mnctctrl.viewtype = $stateParams.view || 'list';
         mnctctrl.getConfig = {
-            stateObj : $state,
-            stateParamsObj : $stateParams
+            stateObj: $state,
+            stateParamsObj: $stateParams
         };
         console.log("MainContentCtrl is initiated ");
-        mnctctrl.shareMe = function(idx, eachfdobj, e) {
+        mnctctrl.shareMe = function (idx, eachfdobj, e) {
             if (e) {
                 e.preventDefault();
                 e.stopPropagation();
             }
             console.log(eachfdobj);
         };
-        _updateData = function(config) {
-            FeedsService.getFeedsDump((config.stateParamsObj && config.stateParamsObj.categoryname) || 'All')
-                .then(function(data) {
+        _updateData = function (config) {
+            FeedsService.getFeedsDump((config.stateParamsObj && config.stateParamsObj.cname) || 'All', (config.stateParamsObj && config.stateParamsObj.view) || 'list')
+                .then(function (data) {
                     mnctctrl.feedslist = data.data;
+                    if (mnctctrl.viewtype === 'tiles') {
+                        mnctctrl.rows = SplitArrayService.SplitArray(mnctctrl.feedslist, 1); //im splitting an array of images into 3 columns
+                    }
                 });
         };
         _updateData(mnctctrl.getConfig);
@@ -60,12 +76,12 @@ angular.module('hqFeeds')
         var ftrctrl = this;
         console.log("FooterCtrl is initiated ");
     }])
-    .controller('UpgradeCtrl', [ '$window', 'FeedsService', function ($window,FeedsService) {
+    .controller('UpgradeCtrl', [ '$window', 'FeedsService', function ($window, FeedsService) {
         console.log("upctrl is initiated ");
         var upctrl = this,
             upgradeWindowFeatures = "menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes";
-        upctrl.upgrade = function() {
-            $window.open('/paypal',"HQ Feeds Upgrade",upgradeWindowFeatures);
+        upctrl.upgrade = function () {
+            $window.open('/paypal', "HQ Feeds Upgrade", upgradeWindowFeatures);
         };
     }])
     .controller('SettingsCtrl', [ 'FeedsService', function (FeedsService) {

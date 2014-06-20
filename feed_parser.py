@@ -376,6 +376,20 @@ def get_all_feeds_dump_for_user():
             'recommendation' : '3',
             'feedupdated' : '01:20am',
             'content' : 'Dynamic Group Body - 3'
+        },
+        {
+            'title' : 'Dynamic Group Header - 4',
+            'feed' : 'Site point',
+            'recommendation' : '4',
+            'feedupdated' : '01:20am',
+            'content' : 'Dynamic Group Body - 4'
+        },
+        {
+            'title' : 'Dynamic Group Header - 5',
+            'feed' : 'Site point',
+            'recommendation' : '5',
+            'feedupdated' : '01:20am',
+            'content' : 'Dynamic Group Body - 5'
         }
     ]
     return json.dumps(feeds_list)

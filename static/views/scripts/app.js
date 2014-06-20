@@ -8,7 +8,7 @@ angular.module('hqFeeds', ['ui.bootstrap','ui.router'])
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('home', {
-                url: '/Category?categoryname',
+                url: '/Category/:cname/:view',
                 views: {
                     'topNav' : {
                         templateUrl: '/static/views/partials/topnav.html',

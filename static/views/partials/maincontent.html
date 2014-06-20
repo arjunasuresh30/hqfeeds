@@ -1,51 +1,94 @@
 <!--main-->
-<div class="container" id="main">
-    <div class="row">
-        <div class="panel-group" id="accordion">
-            <accordion>
-                <accordion-group ng-repeat="eachfeed in mnctctrl.feedslist">
-                    <accordion-heading>
-                        <div class="normal-text font-size-12px feed-blogtitle font-color-999999">
-                            {{eachfeed.feed}}
-                        </div>
-                        <div class="pull-right" ng-click="mnctctrl.shareMe($index, eachfeed, $event)">
-                            <div class="feed-action pull-right">
-                                <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-twitter font-size-14px pad-top5"></i>
-                                </a>
+<div ng-if="mnctctrl.viewtype === 'list'">
+    <div class="container" id="main">
+        <div class="row">
+            <div class="panel-group" id="accordion">
+                <accordion>
+                    <accordion-group ng-repeat="eachfeed in mnctctrl.feedslist">
+                        <accordion-heading>
+                            <div class="normal-text font-size-12px feed-blogtitle font-color-999999">
+                                {{eachfeed.feed}}
                             </div>
-                            <div class="feed-action pull-right">
-                                <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-facebook font-size-14px pad-top5"></i>
-                                </a>
+                            <div class="pull-right" ng-click="mnctctrl.shareMe($index, eachfeed, $event)">
+                                <div class="feed-action pull-right">
+                                    <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-twitter font-size-14px pad-top5"></i>
+                                    </a>
+                                </div>
+                                <div class="feed-action pull-right">
+                                    <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-facebook font-size-14px pad-top5"></i>
+                                    </a>
+                                </div>
+                                <div class="feed-action pull-right">
+                                    <a class="font-color-aaaaaa mar-left20"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
+                                </div>
+                                <div class="feed-action pull-right">
+                                    <a class="font-color-aaaaaa mar-left40"><i class="fa fa-star font-size-14px pad-top5"></i></a>
+                                </div>
+                                <div class="feed-time pull-right">
+                                    <a class="font-color-aaaaaa mar-left20">
+                                        {{eachfeed.feedupdated}}
+                                    </a>
+                                </div>
+                                <div class="feed-score pull-right">
+                                    <a class="font-color-aaaaaa">
+                                        {{eachfeed.recommendation}}
+                                    </a>
+                                </div>
                             </div>
-                            <div class="feed-action pull-right">
-                                <a class="font-color-aaaaaa mar-left20"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
-                            </div>
-                            <div class="feed-action pull-right">
-                                <a class="font-color-aaaaaa mar-left40"><i class="fa fa-star font-size-14px pad-top5"></i></a>
-                            </div>
-                            <div class="feed-time pull-right">
-                                <a class="font-color-aaaaaa mar-left20">
-                                    {{eachfeed.feedupdated}}
-                                </a>
-                            </div>
-                            <div class="feed-score pull-right">
-                                <a class="font-color-aaaaaa">
-                                    {{eachfeed.recommendation}}
-                                </a>
-                            </div>
-                        </div>
-                        <div class="feed-data-container">
+                            <div class="feed-data-container">
                             <span class="font-size-14px">
                                 {{eachfeed.title}}
                             </span>
                             <span class="normal-text font-size-12px mar-left15 font-color-666666">
                                 {{eachfeed.content}}
                             </span>
+                            </div>
+                        </accordion-heading>
+                        {{eachfeed.content}}
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="mnctctrl.viewtype === 'tiles'">
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col-md-4 col-sm-6" ng-repeat="eachrow in mnctctrl.rows">
+                <div class="thumbnail panel panel-default" ng-repeat="eachrowcol in eachrow">
+                    <img alt="300x200" src="http://placehold.it/350x150">
+                    <div class="caption">
+                        <h3><a href="#" data-toggle="modal" data-target="#feed-card-single">{{ eachrowcol.title }}</a></h3>
+                        <p>
+                            The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more
+                        </p>
+                    </div>
+                    <div class="feed-card-bottom-container">
+                        <div class="pull-left">
+                            <div class="feed-score small pull-left mar-right10 pad-top5">
+                                <a href="#" class="font-color-aaaaaa"><i class="fa fa-star pad-right5"></i>27</a>
+                            </div>
+                            <div class="small pull-left pad-top5">
+                                <a href="#" class="font-color-aaaaaa">www.example.com</a>
+                            </div>
                         </div>
-                    </accordion-heading>
-                    {{eachfeed.content}}
-                </accordion-group>
-            </accordion>
+                        <div class="pull-right">
+                            <div class="feed-action pull-right mar-right20">
+                                <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-twitter font-size-14px pad-top5"></i> </a>
+                            </div>
+                            <div class="feed-action pull-right">
+                                <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-facebook font-size-14px pad-top5"></i> </a>
+                            </div>
+                            <div class="feed-action pull-right">
+                                <a href="#" class="font-color-aaaaaa mar-left10"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
+                            </div>
+                            <div class="feed-action pull-right">
+                                <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-star font-size-14px pad-top5"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
