@@ -60,7 +60,15 @@ angular.module('hqFeeds')
         var ftrctrl = this;
         console.log("FooterCtrl is initiated ");
     }])
-    .controller('UpgradeCtrl', [ 'FeedsService', function (FeedsService) {
-        var upctrl = this;
+    .controller('UpgradeCtrl', [ '$window', 'FeedsService', function ($window,FeedsService) {
         console.log("upctrl is initiated ");
+        var upctrl = this,
+            upgradeWindowFeatures = "menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes";
+        upctrl.upgrade = function() {
+            $window.open('/paypal',"HQ Feeds Upgrade",upgradeWindowFeatures);
+        };
+    }])
+    .controller('SettingsCtrl', [ 'FeedsService', function (FeedsService) {
+        var stctrl = this;
+        console.log("stctrl is initiated ");
     }]);

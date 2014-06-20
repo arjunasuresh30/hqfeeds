@@ -44,6 +44,23 @@ angular.module('hqFeeds', ['ui.bootstrap','ui.router'])
                         controller: "FooterCtrl as ftrctrl"
                     }
                 }
+            })
+            .state('settings', {
+                url: '/settings',
+                views: {
+                    'topNav' : {
+                        templateUrl: '/static/views/partials/topnav.html',
+                        controller: "TopNavCtrl as tpnvCtrl"
+                    },
+                    'mainContent': {
+                        templateUrl: '/static/views/partials/settings.html',
+                        controller: "SettingsCtrl as stctrl"
+                    },
+                    'footer': {
+                        templateUrl: '/static/views/partials/footer.html',
+                        controller: "FooterCtrl as ftrctrl"
+                    }
+                }
             });
     }])
     .run(['$state', function ($state) {
