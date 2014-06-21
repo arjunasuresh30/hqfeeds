@@ -1,0 +1,39 @@
+.thumbnail {
+	padding: 5px;
+	padding-bottom: 40px;
+}
+.caption p {
+    font-weight: normal;
+}
+.thumbnail .caption {
+	padding: 10px;
+}
+.feed-card-bottom-container {
+	position: relative;
+	bottom: 0;
+	left: 10px;
+}
+.feed-action {
+	visibility: hidden;
+}
+.panel:hover .feed-action {
+	visibility: visible;
+	z-index: 999;
+}
+.modal-dialog .feed-card-single-control{
+    color: #333333;
+    font-size: 24px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    top: 50%;
+    width: 60px;
+
+}
+.modal-dialog .feed-card-single-control.card-view-next{
+    left: auto;
+    right: 0;
+
+}

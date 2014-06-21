@@ -1,0 +1,84 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        ×
+    </button>
+    <h4 class="modal-title">
+        {{ item.title }}
+    </h4>
+    <div class="pull-left mar-top10">
+        <div class="pull-left">
+            <div class="feed-score small pull-left mar-right10">
+                <a href="#" class="font-color-aaaaaa"><i class="fa fa-star pad-right5"></i>{{ item.recommendation }}</a>
+            </div>
+            <div class="small pull-left mar-right10">
+                <a href="#" class="font-color-aaaaaa">{{ item.feed }}</a>
+            </div>
+            <div class="small pull-left font-color-aaaaaa mar-right20">
+                {{ item.feedupdated }}
+            </div>
+        </div>
+    </div>
+    <div class="btn-group pull-right mar-right15">
+        <button class="btn btn-default font-color-aaaaaa" type="button">
+            <i class="fa fa-facebook-square font-size-16px"></i>
+        </button>
+        <button class="btn btn-default font-color-aaaaaa" type="button">
+            <i class="fa fa-dropbox font-size-16px"></i>
+        </button>
+        <button class="btn btn-default font-color-aaaaaa" type="button">
+            <i class="fa fa-linkedin font-size-16px"></i>
+        </button>
+        <div class="btn-group share-more">
+            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle font-color-aaaaaa" type="button">
+                <i class="fa fa-share"></i>
+            </button>
+            <ul class="nav dropdown-menu">
+                <li>
+                    <a href="#"><i class="fa fa-dribbble mar-right5 font-size-16px"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bitbucket mar-right5 font-size-16px"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-twitter mar-right5 font-size-16px"></i> </a>
+                </li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a href="#"><i class="fa fa-tumblr mar-right5 font-size-16px"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-foursquare mar-right5 font-size-16px"></i> </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<a href="#" class="feed-card-single-control card-view-next"><i class="fa fa-chevron-right"></i></a>
+<a href="#" class="feed-card-single-control card-view-prev"><i class="fa fa-chevron-left"></i></a>
+<div class="modal-body">
+    <div class="pad-bottom20">
+        <div class="clearfix text-center">
+            <img alt="300x200" src="http://placehold.it/350x150">
+        </div>
+        <div class="mar-top10">
+            <p>
+                {{ item.content }}
+            </p>
+        </div>
+        <div class="pull-left">
+            <div class="small pull-left pad-top5 mar-right10">
+                <a href="#" class="font-color-999999">Technology,</a>
+            </div>
+            <div class="small pull-left pad-top5 mar-right10">
+                <a href="#" class="font-color-999999">Javascript,</a>
+            </div>
+            <div class="small pull-left pad-top5 mar-right10">
+                <a href="#" class="font-color-999999">Must Read,</a>
+            </div>
+            <div class="small pull-left pad-top5 mar-right10">
+                <a href="#" class="font-color-999999">Angular JS</a>
+            </div>
+        </div>
+    </div>
+</div>
