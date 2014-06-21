@@ -42,32 +42,52 @@ angular.module('hqFeeds')
         };
         _updateMenu();
     }])
-    .controller('MainContentCtrl', [ 'SplitArrayService', 'FeedsService', '$state', '$stateParams', function (SplitArrayService, FeedsService, $state, $stateParams) {
-        var mnctctrl = this, _updateData;
-        mnctctrl.viewtype = $stateParams.view || 'list';
-        mnctctrl.getConfig = {
-            stateObj: $state,
-            stateParamsObj: $stateParams
+    .controller("TileModalCtrl", [ '$scope', '$modalInstance', 'eachItemObj', function ($scope, $modalInstance, eachItemObj) {
+        console.log("TileModalCtrl is initiated ");
+        $scope.item = eachItemObj;
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
         };
-        console.log("MainContentCtrl is initiated ");
-        mnctctrl.shareMe = function (idx, eachfdobj, e) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            console.log(eachfdobj);
-        };
-        _updateData = function (config) {
-            FeedsService.getFeedsDump((config.stateParamsObj && config.stateParamsObj.cname) || 'All', (config.stateParamsObj && config.stateParamsObj.view) || 'list')
-                .then(function (data) {
-                    mnctctrl.feedslist = data.data;
-                    if (mnctctrl.viewtype === 'tiles') {
-                        mnctctrl.rows = SplitArrayService.SplitArray(mnctctrl.feedslist, 1); //im splitting an array of images into 3 columns
+    }])
+    .controller('MainContentCtrl', [ 'SplitArrayService', 'FeedsService', '$state', '$stateParams', '$modal',
+        function (SplitArrayService, FeedsService, $state, $stateParams, $modal) {
+            var mnctctrl = this, _updateData;
+            mnctctrl.viewtype = $stateParams.view || 'list';
+            mnctctrl.getConfig = {
+                stateObj: $state,
+                stateParamsObj: $stateParams
+            };
+            console.log("MainContentCtrl is initiated ");
+            mnctctrl.shareMe = function (idx, eachfdobj, e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                console.log(eachfdobj);
+            };
+            mnctctrl.openModalContent = function (itemObj) {
+                var modalInstance = $modal.open({
+                    templateUrl: '/static/views/partials/tilemodal.html',
+                    controller: 'TileModalCtrl',
+                    size: 'lg',
+                    resolve: {
+                        eachItemObj : function () {
+                            return itemObj;
+                        }
                     }
                 });
-        };
-        _updateData(mnctctrl.getConfig);
-    }])
+            };
+            _updateData = function (config) {
+                FeedsService.getFeedsDump((config.stateParamsObj && config.stateParamsObj.cname) || 'All', (config.stateParamsObj && config.stateParamsObj.view) || 'list')
+                    .then(function (data) {
+                        mnctctrl.feedslist = data.data;
+                        if (mnctctrl.viewtype === 'tiles') {
+                            mnctctrl.rows = SplitArrayService.SplitArray(mnctctrl.feedslist, 1); //im splitting an array of images into 3 columns
+                        }
+                    });
+            };
+            _updateData(mnctctrl.getConfig);
+        }])
     .controller('SocialShareCtrl', [ 'FeedsService', function (FeedsService) {
         var ssCtrl = this;
         console.log("SocialShareCtrl is initiated ");
