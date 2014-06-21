@@ -1,9 +1,9 @@
 <!--main-->
 <div ng-if="mnctctrl.viewtype === 'list'">
     <div ng-include="'/static/views/partials/socialshare.html'"></div>
-    <div class="container" id="main">
+    <div class="container">
         <div class="row">
-            <div class="panel-group" id="accordion">
+            <div class="panel-group">
                 <accordion>
                     <accordion-group ng-repeat="eachfeed in mnctctrl.feedslist">
                         <accordion-heading>
@@ -53,38 +53,40 @@
     </div>
 </div>
 <div ng-if="mnctctrl.viewtype === 'tiles'">
-    <div class="container" id="main">
-        <div class="row">
-            <div class="col-md-4 col-sm-6" ng-repeat="eachrow in mnctctrl.rows">
-                <div class="thumbnail panel panel-default" ng-repeat="eachrowcol in eachrow">
-                    <img alt="300x200" src="http://placehold.it/350x150">
-                    <div class="caption">
-                        <h3><a href="#" data-toggle="modal" data-target="#feed-card-single">{{ eachrowcol.title }}</a></h3>
-                        <p>
-                            The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more
-                        </p>
-                    </div>
-                    <div class="feed-card-bottom-container">
-                        <div class="pull-left">
-                            <div class="feed-score small pull-left mar-right10 pad-top5">
-                                <a href="#" class="font-color-aaaaaa"><i class="fa fa-star pad-right5"></i>27</a>
-                            </div>
-                            <div class="small pull-left pad-top5">
-                                <a href="#" class="font-color-aaaaaa">www.example.com</a>
-                            </div>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6" ng-repeat="eachrow in mnctctrl.rows">
+                    <div class="thumbnail panel panel-default" ng-repeat="eachrowcol in eachrow">
+                        <img alt="300x200" src="http://placehold.it/350x150">
+                        <div class="caption">
+                            <h3><a href="#" data-toggle="modal" data-target="#feed-card-single">{{ eachrowcol.title }}</a></h3>
+                            <p>
+                                The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more
+                            </p>
                         </div>
-                        <div class="pull-right">
-                            <div class="feed-action pull-right mar-right20">
-                                <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-twitter font-size-14px pad-top5"></i> </a>
+                        <div class="feed-card-bottom-container">
+                            <div class="pull-left">
+                                <div class="feed-score small pull-left mar-right10 pad-top5">
+                                    <a href="#" class="font-color-aaaaaa"><i class="fa fa-star pad-right5"></i>27</a>
+                                </div>
+                                <div class="small pull-left pad-top5">
+                                    <a href="#" class="font-color-aaaaaa">www.example.com</a>
+                                </div>
                             </div>
-                            <div class="feed-action pull-right">
-                                <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-facebook font-size-14px pad-top5"></i> </a>
-                            </div>
-                            <div class="feed-action pull-right">
-                                <a href="#" class="font-color-aaaaaa mar-left10"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
-                            </div>
-                            <div class="feed-action pull-right">
-                                <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-star font-size-14px pad-top5"></i> </a>
+                            <div class="pull-right">
+                                <div class="feed-action pull-right mar-right20">
+                                    <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-twitter font-size-14px pad-top5"></i> </a>
+                                </div>
+                                <div class="feed-action pull-right">
+                                    <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-facebook font-size-14px pad-top5"></i> </a>
+                                </div>
+                                <div class="feed-action pull-right">
+                                    <a href="#" class="font-color-aaaaaa mar-left10"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
+                                </div>
+                                <div class="feed-action pull-right">
+                                    <a href="#" class="font-color-aaaaaa mar-left10"> <i class="fa fa-star font-size-14px pad-top5"></i> </a>
+                                </div>
                             </div>
                         </div>
                     </div>
