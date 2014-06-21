@@ -1,54 +1,52 @@
 <!--main-->
 <div ng-if="mnctctrl.viewtype === 'list'">
     <div ng-include="'/static/views/partials/socialshare.html'"></div>
-    <div class="container">
+    <div class="container" id="main">
         <div class="row">
-            <div class="panel-group">
-                <accordion>
-                    <accordion-group ng-repeat="eachfeed in mnctctrl.feedslist">
-                        <accordion-heading>
-                            <div class="normal-text font-size-12px feed-blogtitle font-color-999999">
-                                {{eachfeed.feed}}
+            <accordion>
+                <accordion-group ng-repeat="eachfeed in mnctctrl.feedslist">
+                    <accordion-heading>
+                        <div class="normal-text font-size-12px feed-blogtitle font-color-999999">
+                            {{eachfeed.feed}}
+                        </div>
+                        <div class="pull-right" ng-click="mnctctrl.shareMe($index, eachfeed, $event)">
+                            <div class="feed-action pull-right">
+                                <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-twitter font-size-14px pad-top5"></i>
+                                </a>
                             </div>
-                            <div class="pull-right" ng-click="mnctctrl.shareMe($index, eachfeed, $event)">
-                                <div class="feed-action pull-right">
-                                    <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-twitter font-size-14px pad-top5"></i>
-                                    </a>
-                                </div>
-                                <div class="feed-action pull-right">
-                                    <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-facebook font-size-14px pad-top5"></i>
-                                    </a>
-                                </div>
-                                <div class="feed-action pull-right">
-                                    <a class="font-color-aaaaaa mar-left20"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
-                                </div>
-                                <div class="feed-action pull-right">
-                                    <a class="font-color-aaaaaa mar-left40"><i class="fa fa-star font-size-14px pad-top5"></i></a>
-                                </div>
-                                <div class="feed-time pull-right">
-                                    <a class="font-color-aaaaaa mar-left20">
-                                        {{eachfeed.feedupdated}}
-                                    </a>
-                                </div>
-                                <div class="feed-score pull-right">
-                                    <a class="font-color-aaaaaa">
-                                        {{eachfeed.recommendation}}
-                                    </a>
-                                </div>
+                            <div class="feed-action pull-right">
+                                <a class="font-color-aaaaaa mar-left20"> <i class="fa fa-facebook font-size-14px pad-top5"></i>
+                                </a>
                             </div>
-                            <div class="feed-data-container">
-                            <span class="font-size-14px">
+                            <div class="feed-action pull-right">
+                                <a class="font-color-aaaaaa mar-left20"><i class="fa fa-bookmark font-size-14px pad-top5"></i></a>
+                            </div>
+                            <div class="feed-action pull-right">
+                                <a class="font-color-aaaaaa mar-left40"><i class="fa fa-star font-size-14px pad-top5"></i></a>
+                            </div>
+                            <div class="feed-time pull-right">
+                                <a class="font-color-aaaaaa mar-left20">
+                                    {{eachfeed.feedupdated}}
+                                </a>
+                            </div>
+                            <div class="feed-score pull-right">
+                                <a class="font-color-aaaaaa">
+                                    {{eachfeed.recommendation}}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="feed-data-container">
+                            <span class="normal-text font-size-14px">
                                 {{eachfeed.title}}
                             </span>
                             <span class="normal-text font-size-12px mar-left15 font-color-666666">
-                                {{eachfeed.content}}
+                                {{eachfeed.content | characters:50 :true}}
                             </span>
-                            </div>
-                        </accordion-heading>
-                        {{eachfeed.content}}
-                    </accordion-group>
-                </accordion>
-            </div>
+                        </div>
+                    </accordion-heading>
+                    {{eachfeed.content}}
+                </accordion-group>
+            </accordion>
         </div>
     </div>
 </div>
