@@ -6,19 +6,70 @@ import simplejson as json
 import requests
 import os
 import opml
-import datetime
+# import datetime
 import pymongo
 import logging
 from collections import defaultdict
 import feedparser
+
+from uuid import uuid4
+from datetime import datetime, timedelta
+from flask.sessions import SessionInterface, SessionMixin
+from werkzeug.datastructures import CallbackDict
+from pymongo import MongoClient
 
 from mongo_stuff import MongoLib
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+
+class MongoSession(CallbackDict, SessionMixin):
+
+    def __init__(self, initial=None, sid=None):
+        CallbackDict.__init__(self, initial)
+        self.sid = sid
+        self.modified = False
+
+
+class MongoSessionInterface(SessionInterface):
+
+    def __init__(self, host='localhost', port=27017,
+                 db='', collection='sessions'):
+        client = MongoClient(host, port)
+        self.store = client[db][collection]
+
+    def open_session(self, app, request):
+        sid = request.cookies.get(app.session_cookie_name)
+        if sid:
+            stored_session = self.store.find_one({'sid': sid})
+            if stored_session:
+                if stored_session.get('expiration') > datetime.utcnow():
+                    return MongoSession(initial=stored_session['data'],
+                                        sid=stored_session['sid'])
+        sid = str(uuid4())
+        return MongoSession(sid=sid)
+
+    def save_session(self, app, session, response):
+        domain = self.get_cookie_domain(app)
+        if not session:
+            response.delete_cookie(app.session_cookie_name, domain=domain)
+            return
+        if self.get_expiration_time(app, session):
+            expiration = self.get_expiration_time(app, session)
+        else:
+            expiration = datetime.utcnow() + timedelta(hours=1)
+        self.store.update({'sid': session.sid},
+                          {'sid': session.sid,
+                           'data': session,
+                           'expiration': expiration}, True)
+        response.set_cookie(app.session_cookie_name, session.sid,
+                            expires=self.get_expiration_time(app, session),
+                            httponly=True, domain=domain)
+        
 app = Flask(__name__)
 
+app.session_interface = MongoSessionInterface(db='feeds')
 # import config from $APP_CONFIG file
 
 app.config.from_envvar('APP_CONFIG')  # export APP_CONFIG=/path/to/settings.cfg
@@ -94,7 +145,6 @@ def get_user_info():
 
 
 @app.route('/show_feed_entries/', methods=['POST'])
-#@login_required
 def feed_entries():
     import feedparser
     entries = None
@@ -154,8 +204,7 @@ def oauth_authorized(resp):
     user.oauth_secret = resp['oauth_token_secret']
     dbsession.commit()
     session['user_id'] = user.id
-    return redirect(url_for('view_feed_entries'))
-
+    return redirect(url_for('basic_pages'))
 
 @twitter.tokengetter
 def get_twitter_token():
@@ -188,7 +237,6 @@ def loginaction():
     else:
         return google.authorize(callback=url_for('google_callback', _external=True))
 
-
 def login_or_create_user(json_data):
     from pymongo import MongoClient
     client = MongoClient()
@@ -204,7 +252,6 @@ def login_or_create_user(json_data):
         collection.insert(user_data)
         user_info = collection.find_one({'user_email': json_data['email']})
         session['user'] = user_info
-        # login_user(user_info)
     else:
         # If yes log the user in
         session['user'] = user_info
@@ -253,7 +300,6 @@ def logout():
 
 
 @app.route('/add_feed', methods=['POST'])
-#@login_required
 def add_feed():
     uri = request.data
     from tasks.read_update_feed import check_and_parse_feed
@@ -263,7 +309,6 @@ def add_feed():
 
 
 @app.route('/subscribe', methods=['POST'])
-#@login_required
 def subscribe():
     input_dict = json.loads(request.data)
     from pymongo import MongoClient
@@ -281,7 +326,6 @@ def subscribe():
 
 
 @app.route('/add_tag', methods=['POST'])
-#@login_required
 def add_tag():
     input_dict = json.loads(request.data)
     tags = input_dict['feed_tags']
@@ -302,7 +346,6 @@ def add_tag():
 
 
 @app.route('/remove_tag', methods=['POST'])
-#@login_required
 def remove_tag():
     input_dict = json.loads(request.data)
     tags = input_dict['tags']
@@ -322,7 +365,6 @@ def remove_tag():
 
 
 @app.route('/get_feeds_for_user', methods=['GET'])
-#@login_required
 def get_feeds_for_user():
     from pymongo import MongoClient
     client = MongoClient()
@@ -350,7 +392,6 @@ def get_feeds_for_user():
     return json.dumps(list_of_feeds_export)
 
 @app.route('/get_all_feeds_dump_for_user', methods=['GET'])
-#@login_required
 def get_all_feeds_dump_for_user():
     print request.args.get('ctgy', '')
     user_email = "arjuna@codecognition.com"
@@ -395,7 +436,6 @@ def get_all_feeds_dump_for_user():
     return json.dumps(feeds_list)
     
 @app.route('/get_top_stories_for_user', methods=['GET'])
-#@login_required
 def get_top_stories_for_user():
     user_name = "udnahc"
 
